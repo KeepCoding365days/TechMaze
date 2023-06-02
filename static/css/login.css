@@ -1,0 +1,93 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(to bottom, #D9E5F0 0%, #FFFFFF 100%);
+    background-image: url('https://c0.wallpaperflare.com/preview/200/623/639/access-apple-blur-connection.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #444;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+    font-size: 16px;
+    color: #777;
+}
+
+input[type="text"]:hover, input[type="text"]:focus,
+input[type="password"]:hover, input[type="password"]:focus {
+    background-color: #EEE;
+    outline: none;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+input[type="submit"] {
+    background-color: #558ABB;
+    color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+input[type="submit"]:hover {
+    background-color: #376074;
+}
+
+.error-message {
+    color: #ff0000;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.bottom-text {
+    color: #444;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 30px;
+    line-height: 1.5;
+}
+
+.bottom-text a {
+    color: #558ABB;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.bottom-text a:hover {
+    color: #376074;
+}

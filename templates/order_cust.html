@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Your Orders</title>
+{% endblock %}
+
+
+{% block content %}
+    <h2>Your Orders</h2>
+{% for i in obj %}
+    <table>
+         <tr>
+        <th>Order Id</th>
+        <th>Total Price</th>
+        <th>Payment Method</th>
+        <th>Status</th>
+
+    </tr>
+      <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.Price }}</td>
+        <td>{{i.Payment_Method}}</td>
+        <td>{{i.Status}}</td>
+
+    </tr>
+    </table>
+    <table>
+    <tr>
+        <th>Product Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Seller</th>
+
+    </tr>
+
+    {%  for j in i.Products.all %}
+
+    <tr>
+        <td>{{ j.id }}</td>
+        <td>{{ j.name }}</td>
+        <td>{{ j.Price }}</td>
+        <td>{{ j.Seller.user.first_name }}</td>
+
+
+
+    </tr>
+
+    {%  endfor %}
+
+     </table>
+{% endfor %}
+{% endblock %}

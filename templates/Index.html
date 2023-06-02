@@ -1,0 +1,171 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+<title>Welcome to Techmaze!</title>
+{% endblock %}
+
+{% block content %}
+<div class="header">
+<button class="register-button" onclick="{% url "registration:seller_registration" %}">Register as seller</button>
+<a href="{% url "registration:seller_registration" %}" class="register-link"> Register as Seller</a>
+</div>
+
+<div class="product-container">
+    {% for i in obj %}
+        <div class="product-card">
+            <img class="product-image" src={{ i.img.url }} alt="{{ i.img }}">
+            <h3 class="product-name">{{i.name}}</h3>
+            <p class="product-description">{{ i.Description }}</p>
+            <p class="product-price">Price: {{ i.Price }}</p>
+            {% if i in Prod_c.all %}
+                <form class="product-form" method="POST"> {% csrf_token %}
+                    <input type="hidden" id="prod_id" name="prod_id" value="{{ i.id }}">
+                    <input class="remove-button" type="submit" value="Remove from Cart" name="decision">
+                </form>
+            {% else %}
+                <form class="product-form" method="POST"> {% csrf_token %}
+                    <input type="hidden" id="prod_id" name="prod_id" value="{{ i.id }}">
+                    <input class="add-button" type="submit" value="Add to Cart" name="decision">
+                </form>
+            {% endif %}
+        {% if i in Prod_f.all %}
+                <form class="product-form" method="POST"> {% csrf_token %}
+                    <input type="hidden" id="prod_id" name="prod_id" value="{{ i.id }}">
+                    <input class="remove-button" type="submit" value="Remove from Favourites "
+                     name="decision">
+
+                  </form>
+            {% else %}
+                <form class="product-form" method="POST"> {% csrf_token %}
+                    <input type="hidden" id="prod_id" name="prod_id" value="{{ i.id }}">
+                    <input class="add-button" type="submit" value="Add to Favourites" name="decision">
+                </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+
+
+<style>
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: "Amatic SC", sans-serif;
+  background-image: url('https://c0.wallpaperflare.com/preview/200/623/639/access-apple-blur-connection.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.register-button,
+.register-link {
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-link:hover,
+.register-button:hover {
+  background-color: #555;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.product-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-form {
+  margin-top: auto;
+}
+
+.remove-button {
+    text-align: center;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+    margin-top:15px;
+}
+
+.add-button{
+    text-align:center;
+  margin-top:15px;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-button:hover,
+.remove-button:hover {
+  background-color: #555;
+}
+
+</style>
+{% endblock %}

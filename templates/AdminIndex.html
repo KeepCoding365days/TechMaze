@@ -1,0 +1,12 @@
+{% extends "Index.html" %}
+{% block title%}
+    <title>Admin</title>
+{% endblock %}
+
+{% block content %}
+<body>
+<h2>Welcome to TechMaze Admin Department</h2>
+<a href="{% url 'administration:verify_sellers' %}">Verify Sellers</a>
+
+</body>
+{%  endblock %}

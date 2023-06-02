@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}
+    <title> My Orders</title>
+{% endblock %}
+
+
+{% block content %}
+    {% for i in orders %}
+    {% if seller in i.Seller.all %}
+    <table>
+    <tr>
+        <th>Order id</th>
+        <th>Customer Name</th>
+        <th>Customer Address</th>
+        <th>Customer Phone</th>
+        <th>Payment Method</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>{{ i.id}}</td>
+        <td>{{  i.cust_info.user.first_name}}</td>
+        <td>{{i.cust_info.address}}</td>
+        <td>{{ i.cust_info.phone}}</td>
+        <td>{{i.PaymentMethod}}</td>
+        <td>{{ i.Status}}</td>
+    </tr>
+    </table>
+    {%  for j in i.Products.all %}
+        {% if j.Seller == seller %}
+            <table>
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+
+    </tr>
+    <tr>
+        <td>{{ j.id }}</td>
+        <td>{{ i.name }}</td>
+        <td>{{ i.Price }}</td>
+
+
+
+    </tr>
+        {% endif %}
+    {%  endfor %}
+
+    </table>
+        {% if i.Status == "Placed" %}
+        <form method="POST"> {% csrf_token %}
+            <input type="hidden" id="OrderId" name="OrderId" value="{{ i.id }}">
+            <input type="submit" value="Confirm By seller" name="decision">  </form>
+    <br>
+        <form method="POST"> {% csrf_token %}
+            <input type="hidden" id="OrderId" name="OrderId" value="{{ i.id }}">
+            <input type="submit" value="Cancelled by Seller" name="decision">  </form>
+        <br>
+            {% elif i.Status == "Confirm By seller" %}
+             <form method="POST"> {% csrf_token %}
+            <input type="hidden" id="OrderId" name="OrderId" value="{{ i.id }}">
+            <input type="submit" value="Delivered by Seller" name="decision">  </form>
+            {% endif %}
+
+             {% endif %}
+    {% endfor %}
+{% endblock %}

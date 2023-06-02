@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>TechMaze</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+    <style>
+      /* Style for body and background */
+      body {
+        font-family: "Amatic SC", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://c0.wallpaperflare.com/preview/200/623/639/access-apple-blur-connection.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+
+      /* Style for the header */
+      .header {
+        text-align: center;
+        margin-top: 100px;
+      }
+
+      /* Style for the heading */
+      .heading {
+        font-size: 80px;
+        color: white;
+        text-shadow: 2px 2px #000;
+      }
+
+      /* Style for the subheading */
+      .subheading {
+        font-size: 40px;
+        color: white;
+        margin-top: 50px;
+      }
+
+      /* Style for the button */
+      .button {
+        top:10%;
+        background-color: #000;
+        color: white;
+        font-size: 24px;
+        padding: 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .button:hover{
+background-color: rgb(209, 77, 15);
+
+      }
+      /* Style for the navigation bar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+      }
+
+      /* Style for the links in the navigation bar */
+      .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        text-decoration: none;
+        font-size: 20px;
+      }
+      .navbar a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+
+
+
+.dropdown {
+			float: left;
+			position: relative;
+			display: inline-block;
+      text-align: center;
+        padding: 15px;
+        text-decoration: none;
+        font-size: 20px;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #0a0a0a;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 12px 16px;
+			border-radius: 5px;
+			text-align: center;
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		.dropdown a {
+			display: block;
+			color: rgb(235, 223, 223);
+			padding: 5px;
+			text-decoration: none;
+			transition: background-color 0.3s ease;
+		}
+
+		.dropdown a:hover {
+			background-color: #f10b0b;
+		}
+
+		.dropdown:hover .dropbtn {
+			background-color: #3e8e41;
+		}
+
+
+
+
+
+
+      /* Style for the active link in the navigation bar */
+      .active {
+        background-color: #333;
+      }
+
+      /* Style for the cart link */
+      .cart {
+        float: right;
+      }
+
+      /* Style for the logo */
+      .logo {
+        float: left;
+      }
+
+      /* Style for the content */
+      .content {
+        margin-top: 100px;
+      }
+      footer {
+  background-color: #070606;
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-us {
+  width: 45%;
+}
+
+.about-us h3 {
+  margin-top: 0;
+}
+
+.contact-us {
+  width: 45%;
+  padding: 20px;
+}
+
+.contact-us h3 {
+  margin-top: 0;
+}
+
+.contact-us ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-us li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.contact-us i {
+  margin-right: 10px;
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+
+
+      <div class="logo">
+        <a href="#home" class="active">TechMaze</a>
+      </div>
+
+      <a href="{% url "seller:Add_Product" %}">Add Products</a>
+      <a href="#">My Products</a>
+      <a href="{% url "seller:Seller_order_view" %}">My Orders</a>
+
+    </div>
+
+    <!-- Header -->
+    <section class="header">
+        <h1 class="heading">Welcome to TechMaze</h1>
+        <h2 class="subheading">Explore the World of Technology</h2>
+
+      <a href="{% url "ordering:products" %}" class="button"> Buy an Item </a>
+      </section>
+
+      <section class="content">
+        <p>Smartphones have become an integral part of our daily lives, providing us with access to a wealth of information and entertainment at our fingertips. The mobile phone industry is constantly evolving and innovating, with new devices being released every year. From the latest Apple iPhone and Samsung Galaxy models to emerging brands such as Xiaomi and Oppo, there is no shortage of options for consumers to choose from.
+        </p>
+        <h2></h2>
+        <p>At TechMaze, we offer a wide selection of high-quality products from the world's leading brands. Whether you're looking for a new smartphone, laptop, or gaming console, we have everything you need. Our products are backed by our commitment to quality, affordability, and customer satisfaction.</p>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+              <div class="about-us w3-text-white">
+                <h3>About Us</h3>
+                <p>TechMaze is your one-stop destination for all your technology needs. We offer a wide range of products, including smartphones, laptops, gaming consoles, and much more. Our goal is to provide our customers with the latest technology at the most affordable prices.</p>
+              </div>
+              <div class="contact-us w3-text-white">
+                <h3>Contact Us</h3>
+                <ul>
+                  <li><i class="fas fa-map-marker-alt"></i> Address: Milaad Street Block B-81 Faisal Town,Lahore</li>
+                  <li><i class="fas fa-phone"></i> Phone no. : (555) 555-1234</li>
+                  <li><i class="fas fa-envelope"></i> Email : techmaze@gmail.com</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      </footer>
+    </body>
+    </html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Checkout Page</title>
+	<style>
+		 body {
+        font-family: "Amatic SC", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://c0.wallpaperflare.com/preview/200/623/639/access-apple-blur-connection.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+
+		h2 {
+			font-size: 24px;
+			margin-top: 30px;
+			margin-bottom: 20px;
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			color: #eeebeb;
+		}
+		table {
+			text-align: center;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		}
+		th {
+			padding: 15px;
+			background-color: #444;
+			color: #fff;
+			text-align: left;
+			font-size: 18px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+		td {
+			padding: 10px 15px;
+			border-bottom: 1px solid #ddd;
+		}
+		.input-box {
+  width: 600px; /* Adjust the width as needed */
+  font-size: 20px; /* Adjust the font size as needed */
+}
+
+.input-box::placeholder {
+  font-size: 26px; /* Adjust the placeholder font size as needed */
+}
+
+		td:first-child {
+			font-weight: bold;
+		}
+		td:last-child {
+			text-align: right;
+			font-weight: bold;
+			color: #444;
+		}
+		textarea {
+			width: 40%;
+			padding: 10px;
+			margin: 5px 0;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			background-color: #c4bbbb;
+			resize: none;
+			font-size: 16px;
+			line-height: 1.5;
+			color: #333;
+			font-family: Arial, sans-serif;
+		}
+		.det{
+			display: block;
+    margin: 0 auto; /* centers horizontally */
+    padding: 10px 15px;
+    background-color: #55e414;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+		}
+		label {
+			display: block;
+			margin-top: 20px;
+			font-size: 18px;
+			font-weight: bold;
+			color: #e7dada;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+		input[type=radio] {
+			margin: 5px 10px 5px 0;
+		}
+		button[type=submit] {
+			display: block;
+    margin: 0 auto; /* centers horizontally */
+    padding: 15px 30px;
+    background-color: #55e414;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+		}
+		button[type=text] {
+			display: block;
+    margin: 0 auto; /* centers horizontally */
+    padding: 15px 30px;
+    background-color: #55e414;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+		}
+		.cen{
+			margin-top: 10px;
+			text-align: center;
+		}
+		button[type=submit]:hover {
+			background-color: #112709;
+		}
+	</style>
+</head>
+<body>
+	<h2>This is your order. Please confirm your details:</h2>
+	<table>
+		<tr>
+			<th>Product ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Seller</th>
+		</tr>
+		{% for i in cart.Products.all %}
+		<tr>
+			<td>{{ i.id}}</td>
+			<td>{{ i.name }}</td>
+			<td>{{ i.Price }}</td>
+			<td>{{ i.Seller.user.first_name }}</td>
+			</tr>
+			{% endfor %}
+			<tr>
+			<td colspan="2"></td>
+			<td>Subtotal:</td>
+			<td>{{ price }}</td>
+			</tr>
+			<tr>
+			<td colspan="2"></td>
+			<td>Shipping:</td>
+			<td>0</td>
+			</tr>
+			<tr>
+			<td colspan="2"></td>
+			<td>Total:</td>
+			<td>{{ price }}</td>
+			</tr>
+			</table>
+<button type="text">Enter your Details</button>
+    <form method="POST"> {% csrf_token %}
+<div class="cen">
+
+			<label for="name">Name:</label>
+        <textarea name="name" id="name">
+            {{ info.user.first_name }}
+        </textarea><br>
+    <label for="phone">phone:</label>   <!-- 11 char -->
+        <textarea name="phone" id="phone">
+            {{ info.phone }}
+        </textarea><br>
+    <label for="address">Address:</label>   <!--50 char -->
+       <textarea name="address" id="address">
+            {{ info.address }}
+        </textarea><br><div>
+			<input type="radio" id="wallet" name="payment_method"   value="wallet" required>
+			<label for="wallet">Wallet</label>
+			<input type="radio" id="cod" name="payment_method" value="cod">
+			<label for="cod">Cash on Delivery</label>
+		</div>
+		</div>
+
+
+			<button type="submit">
+        Place Order</button>
+</form>
+			</body>
+			</html>
